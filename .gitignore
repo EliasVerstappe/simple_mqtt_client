@@ -1,0 +1,4 @@
+*.o
+bin/
+app.exe
+libpaho-mqtt3a.dll

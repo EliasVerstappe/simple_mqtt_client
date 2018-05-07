@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build application",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-Wall", "--std=c++11",
+                "-I", "C:/mqtt_libraries/paho.mqtt.cpp/src",
+                "-I", "C:/mqtt_libraries/paho.mqtt.c/src",
+                "-L", "C:/mqtt_libraries/paho.mqtt.cpp/src",
+                "-L", "C:/mqtt_libraries/paho.mqtt.c/src",
+                "-I", "${workspaceFolder}/include",
+                "-g", "src/main.cpp", "src/lib/mqtt_message.cpp", "src/lib/simple_mqtt_client.cpp",
+                "-l", "paho-mqttpp3",
+                "-l", "paho-mqtt3a",
+                "-o", "${workspaceFolder}/app.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "run application",
+            "type": "shell",
+            "command": "${workspaceFolder}/app.exe",
+            "args": [],
+            "presentation": {
+                "reveal": "always"
+            },
+            "dependsOn": [
+                "build application"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
