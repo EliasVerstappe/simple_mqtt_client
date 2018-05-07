@@ -13,12 +13,18 @@ class SomeMessageHandler : public IMQTTMessageHandler {
       std::cout << "Received message on topic '"
         << mqttMessage.get_topic() << "' with payload: "
         << mqttMessage.get_message() << std::endl;
+
+      if (mqttMessage.get_topic() == "oop3/cat/question") {
+        cout << "Received question: " << mqttMessage.get_message() << endl;
+      } else if (mqttMessage.get_topic() == "oop3/cat/winner") {
+        cout << "And the winner is: " << mqttMessage.get_message() << endl;
+      }
     }
 };
 
 const std::string SERVER_ADDRESS("tcp://mqtt.labict.be:1883");
 const std::string CLIENT_ID("sdasdas453953450439534v5");
-const std::string TOPIC("test/hello");
+const std::string TOPIC("oop3/cat");
 
 int main(int argc, char* argv[])
 {
